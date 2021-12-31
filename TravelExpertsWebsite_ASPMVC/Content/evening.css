@@ -1,0 +1,31 @@
+/* evening.css  -   Evening css styles
+ * Author: James Defant
+ * Date: Jun 6 2019
+ * CPRG210 - HTML / CSS / JS / PHP project
+*/
+
+body {
+    background-image: url(../img/montreal2_ca.jpg);
+    color: white;
+}
+table#thumbnail_descriptions, div#linkTable, section#time_greeting {
+    border: 10px solid #4d3f6b;
+    background-color: rgba(10, 10, 10, 0.7);
+}
+.bg-info {
+
+    background-color: #4d3f6b !important;
+}
+.bg-dark {
+    background-color: #212121 !important;
+}
+
+section#time_greeting {
+    border: 5px solid #4d3f6b;
+}
+div.card {
+    background-color: rgba(10, 10, 10, 0.7);
+}
+figcaption.card-body {
+    color: white;
+}

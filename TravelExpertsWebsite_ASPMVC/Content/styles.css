@@ -1,0 +1,388 @@
+﻿/* Global.css  -   Common css styles
+ * Author: James Defant
+ * Date: Jun 6 2019
+ * CPRG210 - HTML / CSS / JS / PHP project
+*/
+
+/*-----------------------------------------------*/
+/* Layout */
+div.pkg-card {
+    margin-bottom: 2rem;
+}
+
+body {
+    background-image: url(../img/IMG_0781_crop_resize_4.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+div#page {
+    background-color: transparent;
+    border-radius: 25px;
+}
+
+div#banner {
+    text-align: center;
+    padding-top: 0.3rem;
+}
+
+h3#welcome {
+    margin: 0 0 -0.5rem;
+}
+
+.company_name, h3#card_title {
+    font-family: 'Stylish', sans-serif;
+    margin: 0;
+}
+
+header {
+    padding-right: 5em;
+}
+
+section {
+    margin-bottom: 1rem;
+}
+
+main {
+    margin-bottom: 2rem;
+}
+
+.row {
+    margin: 0
+}
+/*-----------------------------------------------*/
+/* Navbar */
+.navbar-expand-md .navbar-nav .nav-link {
+    padding-left: 0;
+}
+
+nav.navbar {
+    background-color: #26a69a;
+}
+
+div.navbar-header {
+    padding: 0;
+}
+
+/*-----------------------------------------------*/
+/* Time Greeting Display */
+section#time_greeting {
+    max-width: 15em;
+    margin: auto;
+    padding: 0.5em 1em;
+    font-size: 1.2rem;
+    line-height: 1em;
+    border: 5px solid #17a2b8;
+    border-radius: 15px;
+    background-color: rgba(256, 256, 256, 0.2);
+    background-color: rgba(10, 10, 10, 0.3);
+    color: white;
+}
+
+    section#time_greeting p {
+        margin: 0;
+        text-align: center;
+    }
+
+span#clock {
+    display: inline-block;
+    font-family: "Courier New";
+    color: #e8eaf6;
+    font-weight: bold;
+}
+
+/*-----------------------------------------------*/
+/* Package Cards */
+.pkg-card {
+    margin-bottom: 2rem;
+}
+/*-----------------------------------------------*/
+/* Company contact info box */
+div.contact_col {
+    min-width: 15em;
+}
+
+div.contact {
+    float: right;
+    margin: 1em 1em 1em 0;
+    line-height: 1em;
+}
+
+/*-----------------------------------------------*/
+/* Agency cards */
+
+section.agents {
+    padding: 0.6rem;
+}
+
+.agency_card, .card-header {
+    background-color: #616161;
+    color: white;
+}
+
+.agency_card {
+    margin-top: 1rem;
+}
+
+div.agency_card div.row {
+    background-color: transparent;
+    border-top: none;
+    border-bottom: none;
+    padding: 0.2rem;
+    font-size: 1.3rem;
+}
+
+div.agency_card .city {
+    font-size: 2.2rem;
+    padding: 0 1rem;
+}
+
+.phone a {
+    color: #efefef;
+}
+
+.bus_phone a {
+    color: #707070;
+}
+/*-------------*/
+/* Agent cards */
+.agent_card {
+    padding: 0;
+}
+
+    .agent_card div.row {
+        padding: 0.2rem 1rem 0;
+        align-items: baseline;
+    }
+
+div.agent_card span {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+/*div.agent_card .name {
+    /*  font-size: 1.3rem;
+
+}
+*/
+div.agent_card .position {
+    font-size: 1rem;
+    color: #424242;
+}
+
+/*-----------------------------------------------*/
+/* Photo Cards */
+div.photo {
+    margin-bottom: 1.8rem;
+}
+
+    div.photo div.card {
+        padding: 0.2rem;
+    }
+
+div#thumb_container div.card {
+    padding: 0;
+}
+
+img.card-img-top {
+    padding: 0.3rem;
+    box-shadow: 0 4px 12px #828282;
+}
+
+.card-body {
+    padding: 1.25rem 0.6rem;
+}
+
+figcaption.card-body {
+    font-family: 'Stylish', sans-serif;
+    font-size: 1.6rem;
+    color: #616161;
+    text-align: center;
+}
+/*-----------------------------------------------*/
+/* Thumbnail cards */
+div#thumbnail {
+    margin: auto;
+}
+
+div#thumb_container {
+    max-width: 30em;
+    margin: auto;
+}
+
+table#thumbnail_descriptions {
+    max-width: 20rem;
+    color: white;
+}
+
+table#thumbnail_descriptions, div#linkTable {
+    margin: 1rem auto;
+    border: 10px solid #17a2b8;
+    border-radius: 25px;
+    box-shadow: 0 10px 12px #424242;
+    background-color: rgba(10, 10, 10, 0.3);
+}
+
+td, h3#card_title {
+    text-align: center;
+}
+
+a#thumbnail_link {
+    margin: auto;
+}
+/*-----------------------------------------------*/
+/* Forms */
+form.register {
+    max-width: 50em;
+    margin: 0 auto 2rem;
+    padding: 1.5rem 0;
+    border: 10px solid #17a2b8;
+    border-radius: 25px;
+    box-shadow: 0 10px 12px #424242;
+    background-color: rgba(10, 10, 10, 0.3);
+}
+
+div#bounds {
+    max-width: 400px;
+    margin: auto;
+}
+
+div#bounds1 {
+    position: relative;
+}
+
+fieldset legend {
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+}
+
+form.register button, form.register input.btn, a.wide {
+    margin: 1rem 0.5rem;
+    padding: 0.5rem 0;
+    max-width: 8rem;
+}
+
+div#message button.close {
+    margin: 0;
+    padding: 0.5rem 1.25rem;
+}
+
+div.button-row {
+    padding: 0 1rem;
+}
+
+    div.button-row .wide {
+        display: block;
+        max-width: none;
+        width: 100%;
+    }
+
+button#submit_btn:disabled {
+    background-color: #707070;
+    color: white;
+}
+
+label {
+    display: inline-block;
+}
+
+    label input {
+        margin: 0 1em;
+        border: 1px none red;
+    }
+
+div.input-group, div.form-group, div#select {
+    margin-bottom: 0.5rem;
+}
+
+div.form-group {
+    margin-bottom: 0;
+    padding: 0
+}
+
+div.sel {
+    margin-bottom: 0.5rem;
+}
+
+input.form-control, select.form-control, textarea.form-control {
+    background-color: #e8eaf6;
+}
+
+div.submit {
+    margin-top: 0rem;
+}
+
+form#register_form div.row {
+    position: relative;
+}
+
+div#message {
+    display: none;
+}
+
+div#msg_text {
+    font-size: 0.9em;
+    text-align: center;
+}
+
+div#info_container {
+    position: relative;
+}
+
+p#info {
+    font-size: 0.9rem;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 0.5em 0.7em;
+    margin: 0 1rem;
+    position: absolute;
+    z-index: 1000;
+}
+
+.visible {
+    display: inline-block;
+}
+
+.hidden {
+    display: none;
+}
+
+.dropdown {
+    background-color: #e8eaf6;
+}
+
+/*-----------------------------------------------*/
+/* Link Table */
+
+div#linkTable {
+    max-width: 30rem;
+    margin: auto;
+    padding: 1rem;
+}
+
+
+
+    td a:hover {
+        color: crimson;
+    }
+
+th {
+    background-color: #17a2b8;
+    text-align: center;
+    font-family: 'Stylish', sans-serif;
+    font-size: 2rem;
+}
+
+td.tableLinks {
+    text-align: left;
+}
+
+/*-----------------------------------------------*/
+/* Invoice */
+
+div.invoice h2 {
+    text-align: center;
+}

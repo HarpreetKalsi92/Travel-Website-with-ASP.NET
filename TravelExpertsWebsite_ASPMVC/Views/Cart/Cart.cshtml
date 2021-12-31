@@ -1,0 +1,54 @@
+﻿@model IEnumerable<TravelExpertsWebsite_ASPMVC.Models.Package>
+@*/*
+    *Author: Jaswinder Sangha
+    *Date: Aug 5th, 2019
+    *Display the packages and total amount in cart
+    */*@
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Cart</h1>
+<table class="table">
+    <tr>
+        <th class="bg-info">
+            @Html.DisplayNameFor(model => model.PkgName)
+        </th>
+        <th class="bg-info">
+            @Html.DisplayNameFor(model => model.PkgDesc)
+        </th>
+        <th class="bg-info">
+            @Html.DisplayNameFor(model => model.PkgBasePrice)
+        </th>
+        <th class="bg-info"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PkgName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PkgDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PkgBasePrice)
+            </td>
+            <td>
+                <button class="btn btn-primary" onclick="RemoveFromCart('@item.PackageId')">Remove</button>
+            </td>
+        </tr>
+    }
+</table>
+<h2 class="text-right"><b>Total Amount: @ViewBag.TotalAmount </b></h2>
+<div align="right">
+    <input type="button" class="btn btn-primary" value="Go to Packages" onclick="@("window.location.href='" + @Url.Action("Packages", "Cart") + "'");" />
+    <input type="button" class="btn btn-primary" value="Checkout" onclick="@("window.location.href='" + @Url.Action("Index", "Home") + "'");" />
+</div>
+<script type="text/javascript">
+    function RemoveFromCart(packageId) {
+        alert("Under Construction");
+    };
+</script>

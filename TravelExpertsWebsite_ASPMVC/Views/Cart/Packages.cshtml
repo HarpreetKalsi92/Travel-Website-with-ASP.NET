@@ -1,0 +1,108 @@
+﻿@model IEnumerable<TravelExpertsWebsite_ASPMVC.Models.Package>
+@*/*
+    *Author: Jaswinder Sangha
+    *Date: Aug 5th, 2019
+    *Display all the package AND add packages to Cart when user click "Add to cart" button
+    */*@
+
+@{
+    ViewBag.Title = "Packages";
+    ViewBag.Caption = "Browse our selection of fine vacation packages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Intro section -->
+<section id="thumbnail_table">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-10 offset-md-2 col-sm-9 offset-sm-0 order-2 order-sm-1">
+                <header>
+                    <h2 class="p-md-3">@ViewBag.Title</h2>
+                    <p class="lead muted">@ViewBag.Caption</p>
+                </header>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<div class="alert alert-dismissable fade show" id="message">
+    <div id="msg_text"></div>
+</div>
+
+
+<div align="right">
+    <input type="button" class="btn btn-primary" value="Go to Cart" onclick="@("window.location.href='" + @Url.Action("Cart", "Cart") + "'");" />
+</div>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class=" pkg-card col-md-6" style="margin-bottom:2rem">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="~/img/@Html.DisplayFor(modelItem => item.PkgImage)" class="pkg-img img-fluid" />
+
+                        <p class="card-text">
+                            <b>@Html.DisplayNameFor(model => model.PkgName):</b>
+                            @Html.DisplayFor(modelItem => item.PkgName)
+                        </p>
+                        <p class="card-text">
+                            <b>@Html.DisplayNameFor(model => model.PkgDesc):</b>
+                            @Html.DisplayFor(modelItem => item.PkgDesc)
+                        </p>
+                        <p class="card-text">
+                            <b>@Html.DisplayNameFor(model => model.PkgBasePrice):</b>
+                            @Html.DisplayFor(modelItem => item.PkgBasePrice)
+                        </p>
+                        <button class="btn btn-primary btn float-right" onclick="AddToCart('@item.PackageId')">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<script type="text/javascript">
+    var packages = [];
+    function AddToCart(packageId) {
+        var previousId = document.cookie;
+        if (previousId != "" && previousId != null) {
+            var cvalue = getCookie("id") + ',';
+            packages = cvalue + packageId;
+            document.cookie = "id=" + packages;
+        }
+        else {
+            packages += packageId;
+            document.cookie = "id=" + packages;
+        }
+
+        showMessage("Package added to Cart", "alert-success");
+    };
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+    function showMessage(msgText, alertClass) {
+        var msgDiv = document.getElementById("message");
+        msgDiv.classList.add(alertClass);
+        msg_text.innerHTML = msgText;
+        msgDiv.style.display = "block";
+    }
+</script>
+
+

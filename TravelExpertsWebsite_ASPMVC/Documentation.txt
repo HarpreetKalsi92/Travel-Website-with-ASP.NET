@@ -1,0 +1,11 @@
+﻿Files done by Jaswinder:
+- Cart Controller
+- Cart.cs
+- PackageDB.cs
+- Cart.cshtml
+- EmptyCart.cshtml
+- Packages.cshtml
+- Web.config - database connection setup
+- Added Image & Alternate Text columns to the packages table in TravelExpert database
+- Made changes in the Packages.cshtml
+- Made changes in the Layout.cshtml

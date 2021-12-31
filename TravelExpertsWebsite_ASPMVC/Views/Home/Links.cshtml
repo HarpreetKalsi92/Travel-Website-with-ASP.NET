@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Links";
+    ViewBag.Caption = "Have a look at some of our favourite websites";
+    var data = (Dictionary<string, string>)ViewData["Links"];
+    int count = 1;
+}
+
+<!-- Intro section -->
+<section id="thumbnail_table">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 offset-md-2 col-sm-9 offset-sm-0 order-2 order-sm-1">
+                <header>
+                    <h2 class="p-md-3">@ViewBag.Title</h2>
+                    <p class="lead muted">@ViewBag.Caption</p>
+                </header>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col photo" id="thumb_container">
+                <div class="card  shadow">
+
+                    <!-- Div that will show our thumbnail image -->
+                    <div class="card-header">
+                        <h3 id="card_title">Partner Links</h3>
+                    </div>
+                    <div id="thumbnail" class=" card-body">
+
+
+                       
+                        <table class="table">
+                            <tbody>
+
+                                @foreach (KeyValuePair<string,string> item in data)
+                                {
+                                <tr>
+                                   <td>
+                                       @(count++)
+                                   </td>
+                                    <td class="tableLinks">
+                                        <a href=" @Html.DisplayFor(modelItem => item.Key) " target="_blank">  @Html.DisplayFor(modelItem => item.Value)</a>
+                                    </td>
+                                </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

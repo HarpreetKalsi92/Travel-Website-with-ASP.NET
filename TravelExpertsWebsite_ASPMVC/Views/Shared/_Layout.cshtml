@@ -1,0 +1,210 @@
+﻿@* 
+    Main Razor layout template
+    Author: James Defant
+    Date: Aug 9 2019
+*@
+
+@using TravelExpertsWebsite_ASPMVC.Models
+
+@{
+    const string CURRENT = "CurrentPage";
+    const string LAST = "Last";
+
+    if ((string)Session[CURRENT] != "")
+    {
+        Session[LAST] = Session[CURRENT];
+        Session[CURRENT] = Request.Url.PathAndQuery;
+    }
+    else
+    {
+        Session[CURRENT] = Request.Url.PathAndQuery;
+    }
+    Customer user = (Customer)Session["User"];
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie-edge">
+
+    <title>@ViewBag.Title | Travel Experts</title>
+
+    <!-- Bootstrap 4 css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="~/Content/Global.css" />
+
+    <!-- Linear icons -->
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+    <!-- Google WebFonts -->
+    <link href="https://fonts.googleapis.com/css?family=Muli|Oleo+Script|Stylish&display=swap" rel="stylesheet">
+
+    <!-- Custom css / page -->
+    @RenderSection("head", required: false)
+
+    @switch (ViewData["TimeOfDay"])
+    {
+        case TimeOfDay.Morning:
+            <link rel="stylesheet" href="~/Content/morning.css" />
+            break;
+
+        case TimeOfDay.Evening:
+            <link rel="stylesheet" href="~/Content/evening.css" />
+          break;
+    }
+
+</head>
+<body>
+    <div id="page">
+
+        <!-- Banner -->
+        <div id="banner">
+            <h3 id="welcome">Welcome to</h3>
+            <h1>
+                <span class="badge"><i class="fas fa-plane-departure"></i></span>
+                <span class="company_name">Travel Experts</span>
+                <span class="badge"><i class="fas fa-plane-arrival"></i></span>
+            </h1>
+        </div>
+
+        <!-- Nav -->
+        <nav class="navbar navbar-expand-md sticky-top bg-info navbar-dark" id="nav">
+            <div class="container-fluid navbar-header">
+
+
+                <a href=@Url.Action("Index", "Home") class="navbar-brand">Travel Experts</a>
+
+                <button type="button" class="navbar-toggler navbar-right" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Links -->
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav ml-auto">
+
+
+                        <!-- Packages link -->
+                        <li class="nav-item @(ViewContext.RouteData.Values["Action"].ToString() == "Packages" ? "active" : "")">
+                            <a href=@Url.Action("Packages", "Cart") class="nav-link">
+                                <span class="badge badge-light mr-1 bg-info text-light">
+                                    <span class="lnr lnr-gift"></span>
+                                </span>
+                                Packages
+                            </a>
+                        </li>
+
+                        <!-- Contact link -->
+                        <li class="nav-item @(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "active" : "")">
+                            <a href=@Url.Action("Contact", "Home") class="nav-link">
+                                <span class="badge badge-light mr-1 bg-info text-light">
+                                    <span class="lnr lnr-question-circle"></span>
+                                </span>
+                                Contact
+                            </a>
+                        </li>
+
+                        <!-- Links link -->
+                        <li class="nav-item @(ViewContext.RouteData.Values["Action"].ToString() == "Links" ? "active" : "")">
+                            <a href=@Url.Action("Links", "Home") class="nav-link">
+                                <span class="badge badge-light mr-1 bg-info text-light">
+                                    <span class="lnr lnr-link"></span>
+                                </span>
+                                Links
+                            </a>
+                        </li>
+
+                        @if (Session["User"] == null)
+                        {
+                            <li class="nav-item @(ViewContext.RouteData.Values["Action"].ToString() == "Login/Register" ? "active" : "")">
+                                <a href=@Url.Action("Login", "Account") class="nav-link">
+                                    <span class="badge badge-light mr-1 bg-info text-light">
+                                        <span class="lnr lnr-link"></span>
+                                    </span>
+                                    Login/Register
+                                </a>
+                            </li>
+
+                        }
+                        else
+                        {
+                            <li class="nav-item @(ViewContext.RouteData.Values["Action"].ToString() == "Logout" ? "active" : "")">
+                                <a href=@Url.Action("Logout", "Account") class="nav-link">
+                                    <span class="badge badge-light mr-1 bg-info text-light">
+                                        <span class="lnr lnr-link"></span>
+                                    </span>
+                                    Logout
+                                </a>
+                            </li>
+
+                            <li class="nav-item @(ViewContext.RouteData.Values["Action"].ToString() == "Logout" ? "active" : "")">
+                                <a href=@Url.Action("EditCustomer", "Account") class="nav-link">
+                                    <span class="badge badge-light mr-1 bg-info text-light">
+                                        <span class="lnr lnr-link"></span>
+                                    </span>
+                                    @(user.CustAccount)
+                                </a>
+                            </li>
+
+
+                        }
+
+
+
+
+                        <!-- Cart link -->
+                        <li class="nav-item @(ViewContext.RouteData.Values["Action"].ToString() == "Cart" ? "active" : "")">
+                            <a href=@Url.Action("Cart", "Cart") class="nav-link">
+                                <span class="badge badge-light mr-1 bg-info text-light">
+                                    <span class="lnr lnr-cart"></span>
+                                </span>
+                                Cart
+                            </a>
+                        </li>
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Page -->
+        @RenderBody()
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="py-3 bg-dark text-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7 text-center text-md-left">
+                            <p class="mb-md-0">&copy; @DateTime.Now.Year Travel Experts. All rights reserved.</p>
+                        </div>
+
+                        <div class="col-md-5 mb-0 text-right text-muted">Some images by <a href="http://felixskiservice.com" target="_blank" class="external text-muted">J Defant</a></div>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Bootstrap 4 js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

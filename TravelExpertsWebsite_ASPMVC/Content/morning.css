@@ -1,0 +1,19 @@
+/* morning.css  -   Morning css styles
+ * Author: James Defant
+ * Date: Jun 6 2019
+ * CPRG210 - HTML / CSS / JS / PHP project
+*/
+
+body {
+    background-image: url(../img/buzen1_ja.jpg);
+}
+table#thumbnail_descriptions, div#linkTable, section#time_greeting {
+    border: 10px solid #cc7676;
+}
+.bg-info {
+
+    background-color: #cc7676 !important;
+}
+section#time_greeting {
+    border: 5px solid #cc7676;
+}

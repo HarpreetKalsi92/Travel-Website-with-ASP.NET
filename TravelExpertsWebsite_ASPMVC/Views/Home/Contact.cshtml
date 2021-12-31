@@ -1,0 +1,68 @@
+﻿@using TravelExpertsWebsite_ASPMVC.Models;
+@{
+    ViewBag.Title = "Contact";
+    ViewBag.Caption = "Speak with one of our professional agents to book your next getaway";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var agents = (List<Agent>)ViewData["Agents"];
+    var agencies = (List<Agency>)ViewData["Agencies"];
+}
+<!-- Intro section -->
+<section id="thumbnail_table">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 offset-md-2 col-sm-9 offset-sm-0 order-2 order-sm-1">
+                <header>
+                    <h2 class="p-md-3">@ViewBag.Title</h2>
+                    <p class="lead muted">@ViewBag.Caption</p>
+                </header>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@for (int i = 0; i < agencies.Count; i++)
+{
+  
+
+    <div class="card container agency_card shadow">
+        <div class="card-header row">
+
+            <div class="city col-md-3 col-sm-12">  @agencies[i].AgncyCity</div>
+
+            <div class="address col-md-4 col-sm-6">
+                <div>@agencies[i].AgncyAddress</div>
+                <div> @(agencies[i].AgncyCity + ", " + @agencies[i].AgncyProv + "," + @agencies[i].AgncyCountry)</div>
+                <div>@agencies[i].Postalcode</div>
+            </div>
+
+            <div class="phone col-md-5 col-sm-6">
+                <div>Phone: <a href="tel:+1-@agencies[i].AgncyPhone">@agencies[i].BusinessPhone</a></div>
+                <div>Fax: <a href="tel:+1-@agencies[i].AgncyFax">@agencies[i].BusinessFax</a></div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    foreach (Agent agnt in agents)
+    {
+        if (agnt.AgencyId == i+1)
+        {
+            <div class="card container agent_card shadow">
+                <div class="card-body row">
+                    <span class="name col-lg-3 col-md-6 col-xs-12">@agnt.Name</span>
+                    <span class="position col-lg-3 col-md-6 col-xs-12">@agnt.AgtPosition</span>
+                    <span class="bus_phone col-lg-2 col-md-6 col-xs-12"><a href="tel:+1- @agnt.AgtBusPhone "> @agnt.AgtBusPhone </a></span>
+                    <span class="email col-lg-4 col-md-6 col-xs-12"><a href="mailto: @agnt.AgtEmail "> @agnt.AgtEmail</a></span>
+                </div>
+            </div>
+
+        }
+
+    }
+}
+
+
+

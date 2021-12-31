@@ -1,0 +1,148 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Register</h2>
+
+<!-- Registration form -->
+<form class="register container" id="register_form" action="src/process_form.php?form=register" method="POST">
+    <div class="row no-gutters">
+
+
+        <div class="col-sm-8 offset-sm-2" id="bounds1">
+
+            <!-- Success / Alert message -->
+            <div class="alert alert-dismissible fade show" id="message">
+                <button type="button" class="close" onclick="hideMessage()">&times;</button>
+                <div id="msg_text"><strong>Congratulations!!</strong> You've submitted a form!</div>
+            </div>
+
+            <fieldset>
+                <legend>Personal Info</legend>
+
+                <!-- Name -->
+                <div class="form-row">
+
+                    <!-- First Name text input -->
+                    <div class="form-group col-sm-6 col-xs-12">
+                        <?php echo \TravelExperts\FormBuilder::buildTextInput("CustFirstName", "First Name", "user"); ?>
+                    </div>
+
+                    <!-- Last Name text input -->
+                    <div class="form-group col-sm-6 col-xs-12">
+                        <?php echo \TravelExperts\FormBuilder::buildTextInput("CustLastName","Last Name","user"); ?>
+                    </div>
+
+                </div>
+
+                <!-- Email text input -->
+                <div class="input-group">
+                    <label for="CustEmail" class="sr-only">Email</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">&#64;</span>
+                    </div>
+                    <input type="email" name="CustEmail" class="form-control" id="CustEmail" placeholder="Email"
+                           onclick="clearWarning('CustEmail')" onfocus="showInfo('CustEmail')" onblur="hideInfo()" />
+                </div>
+
+
+                <!-- Phone -->
+                <div class="form-row">
+
+                    <!-- Home phone text input -->
+                    <div class="form-group col-sm-6 col-xs-12">
+                        <?php echo \TravelExperts\FormBuilder::buildTextInput("CustHomePhone","Home Phone","phone"); ?>
+                    </div>
+
+                    <!-- Business phone text input -->
+                    <div class="form-group col-sm-6 col-xs-12">
+                        <?php echo \TravelExperts\FormBuilder::buildTextInput("CustBusPhone","Business Phone","phone-handset"); ?>
+                    </div>
+
+                </div>
+
+                <!-- Address text input -->
+                <?php echo \TravelExperts\FormBuilder::buildTextInput("CustAddress","Address","home"); ?>
+
+                <div class="form-row">
+
+                    <!-- City text input -->
+                    <div class="form-group col-sm-6 col-xs-12">
+                        <?php echo  \TravelExperts\FormBuilder::buildTextInput("CustCity","City","apartment"); ?>
+                    </div>
+
+
+
+                    <!-- Province select input -->
+                    <div class="form-group col-sm-6 col-xs-12" id="select">
+                        <div>
+                            <label for="CustProv" class="sr-only">Select Province</label>
+                            <select name="CustProv" class="form-control" id="CustProv"
+                                    onclick="clearWarning('CustProv')" onfocus="showInfo('CustProv')" onblur="hideInfo()">
+                                <option value="">Select Province</option>
+                                <option value="AB">Alberta</option>
+                                <option value="BC">British Columbia</option>
+                                <option value="MB">Manitoba</option>
+                                <option value="NB">New Brunswick</option>
+                                <option value="NL">Newfoundland</option>
+                                <option value="NS">Nova Scotia</option>
+                                <option value="NT">Northwest Territories</option>
+                                <option value="NU">Nunavut</option>
+                                <option value="ON">Ontario</option>
+                                <option value="PE">Prince Edward Island</option>
+                                <option value="QC">Québec</option>
+                                <option value="SK">Saskatchewan</option>
+                                <option value="YT">Yukon</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <!-- Name -->
+                <div class="form-row">
+
+                    <!-- First Name text input -->
+                    <div class="form-group col-sm-6 col-xs-12">
+                        <?php echo \TravelExperts\FormBuilder::buildTextInput("CustPostal", "Postal Code", "envelope"); ?>
+                    </div>
+
+                    <!-- Last Name text input -->
+                    <div class="form-group col-sm-6 col-xs-12">
+                        <?php echo \TravelExperts\FormBuilder::buildTextInput("CustCountry","Country","earth"); ?>
+                    </div>
+
+                </div>
+
+
+
+                <!-- Comment textarea -->
+                <div class="form-group">
+                    <label for="CustComment" class="sr-only">Leave a comment</label>
+                    <textarea name="CustComment" class="form-control" id="CustComment" rows="3"
+                              placeholder="Would you like to leave us a comment?"
+                              onfocus="showInfo('CustComment')" onblur="hideInfo()"></textarea>
+                </div>
+
+
+                <!-- Buttons -->
+                <div class="form-row button-row submit">
+
+                    <button type="button" class="btn btn-info col" onclick="clearForm('true')">Clear Form</button>
+                    <button type="button" class="btn btn-info col" onclick="validateFormRegister()">Submit Form</button>
+
+                </div>
+
+            </fieldset>
+        </div>
+
+        <div id="info_container" class="col-sm-2">
+            <p id="info" class="hidden"></p>
+        </div>
+
+    </div>
+</form>

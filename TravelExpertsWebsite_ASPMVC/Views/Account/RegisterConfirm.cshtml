@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Error</h2>
+
+<script>
+    window.setTimeout(function () {
+        window.location = "@Url.Action("Packages", "Cart")";
+    }, 4000);
+</script>
+

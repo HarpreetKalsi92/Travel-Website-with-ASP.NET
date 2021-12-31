@@ -1,0 +1,122 @@
+﻿/* MediaQueries.css  -   Common css styles
+ * Author: James Defant
+ * Date: July 30 2019
+ * CPRG210 - HTML / CSS / JS / PHP project
+*/
+
+/*----------------------------------------------------------------------------------------------*/
+/* media queries */
+
+@media only screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    div.contact {
+        float: none;
+        text-align: center;
+        line-height: 1em;
+    }
+
+    form#register_form, form#login_form, form#new_agent_form {
+        padding: 0 0.5rem;
+    }
+
+    p#info {
+        display: none;
+    }
+}
+/* Bootstrap 4  - xs */
+@media only screen and (min-width: 481px) and (max-width: 575px) {
+    div#page {
+        margin: 0;
+        border-radius: 0px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    div.contact {
+        float: none;
+        text-align: center;
+        line-height: 1em;
+    }
+
+    form#register_form, form#login_form, form#new_agent_form {
+        padding: 0 1rem;
+    }
+
+    p#info {
+        display: none;
+    }
+}
+/* Bootstrap 4  - sm */
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    div#page {
+        margin: 1rem 0 5rem;
+        border-radius: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+}
+/* Bootstrap 4  - md */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    div#page {
+        margin: 2rem 3rem 7rem;
+    }
+
+    h1 {
+        font-size: 2.4rem;
+    }
+}
+/* Bootstrap 4  - lg */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    div#page {
+        margin: 3rem 6rem 8rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .agent_card span {
+        font-size: 0.9rem;
+    }
+
+    span.name {
+        font-size: 1.2rem;
+    }
+}
+/* Bootstrap 4  - xl */
+@media only screen and (min-width: 1200px) {
+    div#page {
+        margin: 3rem 8rem 8rem;
+    }
+
+    h1 {
+        font-size: 3.2rem;
+    }
+
+    .agent_card span {
+        font-size: 1rem;
+    }
+
+    span.name {
+        font-size: 1.4rem;
+    }
+}

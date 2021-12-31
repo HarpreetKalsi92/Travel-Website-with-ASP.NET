@@ -1,0 +1,136 @@
+﻿@*
+    Home Page (index)    
+    Author: James Defant
+    Date: Aug 9 2019
+*@
+
+@using TravelExpertsWebsite_ASPMVC.Models
+@{
+    ViewBag.Title = "Destinations";
+    ViewBag.Caption = "Where your dream vacation becomes a reality";
+    var greeting = "";
+}
+
+@switch (ViewData["TimeOfDay"])
+{
+    case TimeOfDay.Morning:
+        greeting = "Good Morning";
+        break;
+
+    case TimeOfDay.Afternoon:
+        greeting = "Good Afternoon";
+        break;
+
+    case TimeOfDay.Evening:
+        greeting = "Good Evening";
+        break;
+}
+
+
+@section scripts
+{
+    <script src="~/Scripts/custom/thumbnails.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            init();
+        };
+    </script>
+}
+
+<!-- Time of day greeting -->
+<section id="time_greeting" class="shadow">
+    <p>
+        @greeting<br>
+        the time is <span id="clock">@DateTime.Now.ToShortTimeString()</span>
+    </p>
+</section>
+
+<!-- Intro section -->
+<section id="thumbnail_table">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-10 offset-md-2 col-sm-9 offset-sm-0 order-2 order-sm-1">
+                <header>
+                    <h2 class="p-md-3">@ViewBag.Title</h2>
+                    <p class="lead muted">@ViewBag.Caption</p>
+                </header>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Pictures of destinations
+     Bootstrap Cards
+     4 wide on desktop,
+     2 wide on tablet -->
+<section>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="photo col-lg-3 col-sm-6">
+                <div class="card shadow border-0 h-100">
+                    <figure>
+                        <img class="card-img-top" src="img/tokyo_ja2.jpg" title="Tokyo - Japan" alt="" />
+                        <figcaption class="card-body">Tokyo,<br>JAPAN</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="photo col-lg-3 col-sm-6">
+                <div class="card shadow border-0 h-100">
+                    <figure>
+                        <img class="card-img-top" src="img/antigua_gu2.jpg" title="Antigua - Guatemala" alt="" />
+                        <figcaption class="card-body">Antigua,<br>GUATEMALA</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="photo col-lg-3 col-sm-6">
+                <div class="card shadow border-0 h-100">
+                    <figure>
+                        <img class="card-img-top" src="img/tuscany_it.jpg" title="Tuscany - Italy" alt="" />
+                        <figcaption class="card-body">Tuscany,<br>ITALY</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="photo col-lg-3 col-sm-6">
+                <div class="card shadow border-0 h-100">
+                    <figure>
+                        <img class="card-img-top" src="img/yelapa_mx.jpg" title="Yelapa - Mexico" alt="" />
+                        <figcaption class="card-body">Yelapa,<br>MEXICO</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="row">
+
+            <!-- Table that will show our thumbnail descriptions -->
+            <div class="col-sm-6 col-xs-12">
+                <table class="table table-light" id="thumbnail_descriptions" currentId=""></table>
+            </div>
+
+            <div class="col-sm-6 col-xs-12 photo" id="thumb_container">
+                <div class="card shadow border-0">
+
+                    <!-- Div that will show our thumbnail image -->
+                    <div class="card-header">
+                        <h3 id="card_title"></h3>
+                    </div>
+                    <div id="thumbnail" class=" card-body"></div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,29 @@
+﻿@model TravelExpertsWebsite_ASPMVC.Models.Cart
+
+@{
+    ViewBag.Title = "EmptyCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Empty Cart</title>
+    <link href="~/Content/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <h1>Your Shopping cart is empty</h1>
+        <p>
+            Please go to Packages page and order the package as you like.
+        </p>
+    </div>
+    <div align="right">
+        <input type="button" class="btn btn-primary" value="Go to Packages" onclick="@("window.location.href='" + @Url.Action("Packages", "Cart") + "'");" />
+    </div>
+</body>
+</html>
+
+
